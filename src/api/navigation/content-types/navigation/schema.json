@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "services",
+  "collectionName": "navigations",
   "info": {
-    "singularName": "service",
-    "pluralName": "services",
-    "displayName": "Service",
-    "description": ""
+    "singularName": "navigation",
+    "pluralName": "navigations",
+    "displayName": "Navigation"
   },
   "options": {
     "draftAndPublish": true
@@ -19,7 +18,7 @@
     }
   },
   "attributes": {
-    "slug": {
+    "config": {
       "pluginOptions": {
         "versions": {
           "versioned": true
@@ -28,15 +27,7 @@
           "localized": true
         }
       },
-      "type": "string",
-      "unique": true,
-      "required": true
-    },
-    "pages": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::page.page",
-      "inversedBy": "services"
+      "type": "json"
     }
   }
 }
