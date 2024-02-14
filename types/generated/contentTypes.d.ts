@@ -948,9 +948,6 @@ export interface ApiServiceService extends Schema.CollectionType {
     draftAndPublish: true;
   };
   pluginOptions: {
-    versions: {
-      versioned: true;
-    };
     i18n: {
       localized: true;
     };
@@ -972,6 +969,25 @@ export interface ApiServiceService extends Schema.CollectionType {
       'manyToMany',
       'api::page.page'
     >;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        versions: {
+          versioned: true;
+        };
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.String &
+      Attribute.SetPluginOptions<{
+        versions: {
+          versioned: true;
+        };
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -987,15 +1003,6 @@ export interface ApiServiceService extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    versions: Attribute.Relation<
-      'api::service.service',
-      'manyToMany',
-      'api::service.service'
-    >;
-    vuid: Attribute.String;
-    versionNumber: Attribute.Integer & Attribute.DefaultTo<1>;
-    versionComment: Attribute.String;
-    isVisibleInListView: Attribute.Boolean & Attribute.DefaultTo<true>;
     localizations: Attribute.Relation<
       'api::service.service',
       'oneToMany',
